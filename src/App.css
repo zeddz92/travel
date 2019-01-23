@@ -1,32 +1,84 @@
-.App {
-  text-align: center;
+/*
+  Header
+*/
+.navbar {
+    min-height: 50px;
+    margin-bottom: 20px;
+    z-index: 1030;
+    width: 100%;
+    border-radius: 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+nav .navbar-header, nav .navbar-collapse {
+    margin: 0 !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+nav .navbar-brand {
+    font-size: 40px;
+    color: #FFF !important;
+    font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+nav .container {
+    padding: 10px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav {
+    border: 0 !important;
+    background: transparent !important;
+    position: absolute !important;
+    border-bottom: 1px rgba(238, 238, 238, 0.18) solid !important;
 }
+
+nav .navbar-collapse.collapse.in, nav .navbar-collapse.collapsing {
+    background: #FFF;
+    border: 0;
+}
+
+nav .navbar-collapse.collapse.in li a, nav .navbar-collapse.collapsing li a {
+    color: #333 !important;
+}
+
+nav .navbar-toggle {
+    border-color: #FFF !important;
+}
+
+nav .navbar-toggle .icon-bar {
+    background-color: #FFF !important;
+}
+
+nav .navbar-toggle:hover {
+    background: rgba(0, 0, 0, 0.1) !important;
+}
+
+nav .navbar-brand {
+    color: #FFF !important;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+nav li a {
+    color: #FFF !important;
+    font-weight: bold;
+}
+
+.dropdown-menu > li > a {
+    color: #333 !important;
+}
+
+nav .navbar-toggle {
+    border-color: #FFF !important;
+}
+
+nav .navbar-collapse.collapse.in {
+    /*background: #FFF;*/
+}
+
+nav .navbar-nav > .open > a {
+    background: transparent !important;
+}
+
+nav .dropdown-menu li a {
+    color: #000 !important;
+}
+
