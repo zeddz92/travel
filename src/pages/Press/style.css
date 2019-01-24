@@ -1,0 +1,25 @@
+.post {
+    border-bottom: 1px #E5E5E5 solid;
+    padding: 20px;
+    margin: 0 30px;
+    cursor: pointer;
+}
+
+.post .label {
+    margin-right: 4px;
+}
+
+.post h3 {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.post p {
+    font-size: 14px;
+    color: #9B9B9B;
+    font-weight: normal;
+}
+
+.post-date {
+    margin-right: 5px;
+}
