@@ -4,6 +4,8 @@ import {Route, Switch} from "react-router-dom";
 import * as routePath from './utils/routes';
 import Home from "./pages/Home";
 import Press from "./pages/Press";
+import Contact from "./pages/Contact";
+
 
 export default function Routes() {
     return (
@@ -11,6 +13,7 @@ export default function Routes() {
             <Switch>
                 <Route exact path={routePath.HOME} component={Home}/>
                 <Route  path={routePath.PRESS} component={Press}/>
+                <Route  path={routePath.CONTACT} component={Contact}/>
             </Switch>
         </div>
     )

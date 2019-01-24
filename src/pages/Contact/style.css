@@ -1,0 +1,26 @@
+input.form-control {
+    height: 54px;
+    padding: 5px 10px !important;
+}
+
+.contact-form {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.contact-form button[type=submit] {
+    white-space: nowrap;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 20px;
+    color: #fff;
+    background-image: linear-gradient(#4f93ce, #285f8f);
+    border: 1px solid #285f8f;
+    margin-left: -15px;
+}
+
+.contact-form button[type=submit] .glyphicon {
+    margin-right: 10px;
+}
+
+

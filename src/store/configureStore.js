@@ -8,7 +8,7 @@ import {api} from '../utils/api';
 const persistConfig = {
     key: 'root',
     storage: storage,
-    blacklist: ['error', 'loading', 'search']
+    blacklist: ['error', 'loading', 'form']
 };
 
 const rootReducer = (state, action) => {
