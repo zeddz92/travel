@@ -1,0 +1,17 @@
+.staff-card {
+    border: 0
+}
+
+.staff-card .panel-heading {
+    background-color: white;
+    border-bottom: 3px #4A90E2 solid !important;
+}
+
+.staff-card .panel-heading small {
+    margin-left: 15px;
+    font-weight: 400;
+}
+
+.staff-card .panel-body {
+    text-align: center;
+}
