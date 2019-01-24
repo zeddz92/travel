@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Press from "./pages/Press";
 import Contact from "./pages/Contact";
 import Staff from "./pages/Staff";
+import About from "./pages/About";
 
 export default function Routes() {
     return (
@@ -15,6 +16,7 @@ export default function Routes() {
                 <Route  path={routePath.PRESS} component={Press}/>
                 <Route  path={routePath.CONTACT} component={Contact}/>
                 <Route  path={routePath.STAFF} component={Staff}/>
+                <Route  path={routePath.ABOUT} component={About}/>
             </Switch>
         </div>
     )
