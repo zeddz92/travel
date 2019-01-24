@@ -1,6 +1,6 @@
 const defaultState = [];
 
-export function news(state = defaultState, action) {
+export function posts(state = defaultState, action) {
     switch (action.type) {
         default:
             return state;

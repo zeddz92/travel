@@ -1,14 +1,16 @@
 import {combineReducers} from 'redux';
 import {company} from './company';
-import {news} from './news';
+import {posts} from './posts';
 import {services} from './services';
 import {staff} from './staff';
 import {jobs} from './jobs';
+import {reducer as formReducer} from 'redux-form';
 
 export default combineReducers({
     company,
-    news,
+    posts,
     services,
     staff,
-    jobs
+    jobs,
+    form: formReducer
 });

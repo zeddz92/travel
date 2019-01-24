@@ -1,93 +1,96 @@
-import React from 'react';
-import {Grid, Row, Col, ListGroup, ListGroupItem, Label} from "react-bootstrap";
+import React, {PureComponent} from 'react';
+import {Grid, Row, Col, ListGroup, ListGroupItem} from "react-bootstrap";
 import Pagination from "react-js-pagination";
-
-import Head from "../../components/Head";
-import SubHeader from "../../components/SubHeader";
+import connect from "react-redux/es/connect/connect";
 
 import './style.css';
+import Head from '../../components/Head';
+import SubHeader from '../../components/SubHeader';
+import PostCard from './PostCard';
 
-function Press(props) {
 
-    return (
-        <div>
-            <Head title={"Press"}/>
-            <SubHeader title={"Press"}/>
-            <Grid>
-                <Row className="show-grid">
-                    <Col md={2}>
-                        <ListGroup>
-                            <ListGroupItem href="#">News</ListGroupItem>
-                            <ListGroupItem href="#">Media</ListGroupItem>
-                            <ListGroupItem href="#">Planetyze</ListGroupItem>
-                            <ListGroupItem href="#">Planetyze Hostel</ListGroupItem>
-                            <ListGroupItem href="#">TripleLights</ListGroupItem>
-                        </ListGroup>
+const demoPosts = [
+    {
+        title: "Planetyze Hostel was featured in NHK world news",
+        body: "Our newly opened Planetyze Hostel was featured on NHK world news on February 22nd. You can check the video with our CEO Hashimoto’s interview, from the link below. (The link might expire after a certain period) Dealing with Tokyo Hotel Shortage Our company is open to any inquiries, interviews, etc. on trends of foreign travelers […] ",
+        date: "2017/02/23",
+        categories: ["Media", "Travelience"]
+    },
+    {
+        title: "Travelience was featured in RAFU SHIMPO on 6th Dec. 2014.",
+        body: "Travelience was featured in RAFU SHIMPO on 6th Dec. 2014.",
+        date: "2015/12/04",
+        categories: ["Media", "Travelience"]
+    },
+];
 
-                    </Col>
-                    <Col md={10}>
-                        <div className="post">
-                            <Row>
-                                <Col xs={12}>
-                                    <span className="post-date">2015/05/25 </span>
+const demoCategories = [
+    "News", "Media", "Planetyze", "Planetyze Hostel", "TripleLights"
+];
 
-                                    <Label>News</Label>
-                                    <Label>Travelience</Label>
-                                </Col>
 
-                                <Col xs={12}>
-                                    <h3>Travelience awarded 2015 Tripadvisor certificate of excellence!</h3>
-                                    <p>Travelience today announced that it has received a TripAdvisor® Certificate of
-                                        Excellence award. The accolade, which honors hospitality excellence, is given
-                                        only to establishments that consistently achieve outstanding traveller reviews
-                                        on TripAdvisor, and is extended to qualifying businesses worldwide.
-                                        Establishments awarded the Certificate of Excellence are located all over the
-                                        world and represent the upper […]</p>
-                                </Col>
+class Press extends PureComponent {
 
-                            </Row>
+    componentDidMount() {
 
-                        </div>
+        const {fetchPosts} = this.props;
+        fetchPosts();
+    }
 
-                        <div className="post">
-                            <Row>
-                                <Col xs={12}>
-                                    <span className="post-date">2015/05/25 </span>
+    render() {
+        return (
+            <div>
+                <Head title={"Press"}/>
+                <SubHeader title={"Press"}/>
+                <Grid>
+                    <Row className="show-grid">
+                        <Col md={2}>
+                            <ListGroup>
+                                {demoCategories.map(category => (
+                                    <ListGroupItem href="#">{category}</ListGroupItem>
+                                ))}
+                            </ListGroup>
 
-                                    <Label>News</Label>
-                                    <Label>Travelience</Label>
-                                </Col>
+                        </Col>
+                        <Col md={10}>
+                            {demoPosts.map(post => (
+                                <PostCard data={post}/>
+                            ))}
+                            <div className="text-center">
+                                <Pagination
+                                    activePage={1}
+                                    itemsCountPerPage={10}
+                                    totalItemsCount={20}
+                                    pageRangeDisplayed={10}
+                                    onChange={(page) => {
+                                    }}
+                                />
+                            </div>
 
-                                <Col xs={12}>
-                                    <h3>Travelience awarded 2015 Tripadvisor certificate of excellence!</h3>
-                                    <p>Travelience today announced that it has received a TripAdvisor® Certificate of
-                                        Excellence award. The accolade, which honors hospitality excellence, is given
-                                        only to establishments that consistently achieve outstanding traveller reviews
-                                        on TripAdvisor, and is extended to qualifying businesses worldwide.
-                                        Establishments awarded the Certificate of Excellence are located all over the
-                                        world and represent the upper […]</p>
-                                </Col>
+                        </Col>
 
-                            </Row>
+                    </Row>
 
-                        </div>
-                        <div className="text-center">
-                            <Pagination
-                                activePage={1}
-                                itemsCountPerPage={10}
-                                totalItemsCount={20}
-                                pageRangeDisplayed={10}
-                                onChange={(page) => {}}
-                            />
-                        </div>
+                </Grid>
+            </div>
+        );
+    }
+}
 
-                    </Col>
+function mapStateToProps({posts}) {
 
-                </Row>
+    return {
+        posts,
+    }
+}
 
-            </Grid>
-        </div>
-    );
-};
 
-export default Press;
+function mapDispatchToProps(dispatch) {
+    return {
+        fetchPosts: () => {
+        },
+
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Press);
