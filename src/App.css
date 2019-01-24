@@ -1,3 +1,10 @@
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
 /*
   Header
 */
@@ -82,74 +89,81 @@ nav .dropdown-menu li a {
     color: #000 !important;
 }
 
-/*
-    Home Page
-*/
 
-.home h1 {
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 40px;
-}
-
-.center-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-.full-screen-video {
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    overflow: hidden;
-    background-size: cover;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: 50% 50%;
-    background-image: none;
-}
-
-#background-video {
-    margin: auto;
-    position: absolute;
-    z-index: -1;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    visibility: visible;
-    opacity: 1;
-    width: auto;
-    height: 100%;
-
-}
-
-.home {
-    height: 100vh;
-    background-color: #333;
-    background-size: cover;
-
-    position: absolute;
-    z-index: 400;
-    top: 0;
-    width: 100%;
+.page-header h1 {
+    color: white;
+    font-size: 60px;
+    font-family: HiraginoSans-W6 sans-serif;
 }
 
 
-.container-overlay {
-    background-color: rgba(0, 0, 0, 0.4) !important;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
+.page-header {
+    padding-top: 160px;
+    background: rgb(21, 34, 47);;
+    padding-bottom: 110px;
+    margin: 0;
+    margin-bottom: 70px;
     background-image: url(/img/bg-shadow.png) !important;
     background-position: bottom !important;
     background-repeat: repeat-x;
+    text-align: center;
+}
+
+@media (max-width: 992px) {
+    .page-header {
+        padding-top: 90px !important;
+        padding-bottom: 30px !important;
+        margin-bottom: 50px !important;
+        background-size: inherit;
+    }
+
+    .page-header span {
+        font-size: 28px;
+
+    }
+
+    .page-header h1 {
+        font-size: 32px;
+    }
+
+}
+
+
+
+.text-center {
+    text-align: center;
+}
+
+.page-title {
+    margin-bottom: 80px;
+}
+
+.page-content {
+    margin-bottom: 80px;
+}
+
+
+
+.page-content h3 {
+    font-size: 25px !important;
+    font-weight: 500 !important;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    color: #333 !important;
+}
+
+.page-title h2 {
+    color: #000;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-weight: 600;
+}
+
+.page-title hr {
+    width: 300px;
+    border-top: 3px #4A90E2 solid;
+}
+
+.company-info-table {
+    margin: 0 auto 70px;
 }
