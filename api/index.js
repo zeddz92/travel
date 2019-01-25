@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const expressValidator = require('express-validator');
 
 const app = express();
 app.use(cors());
@@ -8,6 +9,8 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
+app.use(expressValidator());
+
 
 // Routes
 require('./routes/post')(app);
@@ -16,6 +19,7 @@ require('./routes/category')(app);
 require('./routes/service')(app);
 require('./routes/company')(app);
 require('./routes/job')(app);
+require('./routes/contact')(app);
 
 app.all(function (req, res, next) {
     const {page, perPage} = req.query;
