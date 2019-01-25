@@ -16,13 +16,12 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "cookie-session": "^2.0.0-beta.2",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "express-validator": "^5.3.1",
     "forever": "^0.15.3",
-    "mongoose": "^4.11.1",
-    "nodemon": "^1.11.0",
-    "passport": "^0.3.2",
-    "passport-google-oauth20": "^1.0.0"
+    "nodemailer": "^5.1.1",
+    "nodemon": "^1.18.9",
+    "paginate-array": "^2.1.0"
   }
 }
