@@ -7,6 +7,7 @@ import Press from "./pages/Press";
 import Contact from "./pages/Contact";
 import Staff from "./pages/Staff";
 import About from "./pages/About";
+import Service from "./pages/Service";
 
 export default function Routes() {
     return (
@@ -17,6 +18,7 @@ export default function Routes() {
                 <Route  path={routePath.CONTACT} component={Contact}/>
                 <Route  path={routePath.STAFF} component={Staff}/>
                 <Route  path={routePath.ABOUT} component={About}/>
+                <Route  path={routePath.SERVICE} component={Service}/>
             </Switch>
         </div>
     )
