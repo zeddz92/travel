@@ -1,10 +1,18 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {Navbar, Nav, NavItem, NavDropdown, MenuItem} from 'react-bootstrap';
 import * as routes from '../utils/routes';
-export default function Header() {
+
+function Header(props) {
+    console.log(props);
+    const {location} = props;
+
+    //If current route is home header will always be shown, otherwise give normal index for modals and gallery
+    const zIndex = location.pathname === routes.HOME ? 1030 : 0;
+
     return (
         <div className="header">
-            <Navbar inverse collapseOnSelect>
+            <Navbar style={{zIndex: zIndex }} inverse collapseOnSelect>
                 <Navbar.Header>
                     <Navbar.Brand>
                         <a href={"/"}>Travelience</a>
@@ -49,3 +57,5 @@ export default function Header() {
         </div>
     );
 };
+
+export default withRouter(Header);

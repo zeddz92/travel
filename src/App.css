@@ -167,3 +167,11 @@ nav .dropdown-menu li a {
 .company-info-table {
     margin: 0 auto 70px;
 }
+
+.clickable {
+    cursor: pointer;
+}
+
+.gallery .photo-item {
+    margin-bottom: 25px;
+}
