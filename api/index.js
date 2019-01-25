@@ -8,6 +8,11 @@ app.use(cors());
 app.use(bodyParser.json());
 
 require('./routes/post')(app);
+require('./routes/staff')(app);
+require('./routes/category')(app);
+require('./routes/service')(app);
+require('./routes/company')(app);
+require('./routes/job')(app);
 
 app.get('/', (req, res) => {
     res.send({
