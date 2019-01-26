@@ -1,7 +1,45 @@
-const defaultState = [];
+import {RECEIVE_STAFF, INVALIDATE_STAFF, REQUEST_STAFF, ERROR_STAFF} from '../actions/types';
 
-export function staff(state = defaultState, action) {
+const initialState = {
+    isFetching: false,
+    didInvalidate: false,
+    error: null,
+    items: [],
+};
+
+export function staff(state = initialState, action) {
     switch (action.type) {
+
+        case INVALIDATE_STAFF:
+            return {
+                ...state,
+                didInvalidate: true
+            };
+
+        case ERROR_STAFF:
+            return {
+                ...state,
+                isFetching: false,
+                error: action.error
+            };
+
+        case REQUEST_STAFF:
+            return {
+                ...state,
+                isFetching: true,
+                didInvalidate: false,
+            };
+
+        case RECEIVE_STAFF:
+            return {
+                ...state,
+                isFetching: false,
+                didInvalidate: false,
+                items: action.payload.data,
+                lastUpdated: action.payload.lastUpdated,
+                error: null
+            };
+
         default:
             return state;
     }

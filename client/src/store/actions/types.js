@@ -1,0 +1,5 @@
+// Staff
+export const REQUEST_STAFF = "REQUEST_STAFF";
+export const RECEIVE_STAFF = "RECEIVE_STAFF";
+export const INVALIDATE_STAFF = "INVALIDATE_STAFF";
+export const ERROR_STAFF = "ERROR_STAFF";
