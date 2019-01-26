@@ -45,7 +45,6 @@ const fetchStaff = () => (dispatch, getState, api) => {
 
 export const fetchStaffIfNeeded = () => (dispatch, getState) => {
     const staff = getState().staff;
-    return dispatch(fetchStaff())
 
     if(isDataStale(staff)) {
         dispatch(invalidateStaff())
