@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Routes from './Routes';
 
 import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 class App extends Component {
   render() {

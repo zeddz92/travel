@@ -1,35 +1,14 @@
 import React, {PureComponent} from 'react';
-import {Col, Grid, Row, Panel, PageHeader} from "react-bootstrap";
+import {Grid, Row} from "react-bootstrap";
 import connect from "react-redux/es/connect/connect";
-
+import {toast, ToastContainer} from 'react-toastify';
 
 import './style.css';
 import Head from "../../components/Head";
 import SubHeader from "../../components/SubHeader";
 import StaffCard from "./StaffCard";
-
-const demoStaff = [
-    {
-        name: "Naoki",
-        position: "CEO - Japan",
-        video_url: "https://player.vimeo.com/video/299845634?app_id=122963"
-    },
-    {
-        name: "Rodrigo",
-        position: "CTO - Argentina",
-        video_url: "https://player.vimeo.com/video/299847477?app_id=122963"
-    },
-    {
-        name: "Risa",
-        position: "Guide/Customer Suport Team - Japan",
-        video_url: "https://player.vimeo.com/video/299845651?app_id=122963"
-    },
-    {
-        name: "Emi",
-        position: "Guide Support - Japan",
-        video_url: "https://player.vimeo.com/video/299845544?app_id=122963"
-    }
-];
+import Loader from "../../components/Loader";
+import {fetchStaffIfNeeded} from "../../store/actions/staff";
 
 class Staff extends PureComponent {
 
@@ -39,20 +18,41 @@ class Staff extends PureComponent {
         fetchStaff();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot){
 
+        const {staff} = this.props;
+        if(staff.error && !staff.isFetching) {
+            toast.error(staff.error.message, {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+    }
 
     render() {
+
+        const {staff} = this.props;
         return (
             <div>
                 <Head title="Staff"/>
                 <SubHeader title={"Staff"}/>
+
                 <Grid>
-                    <Row>
-                        {demoStaff.map(member => (
-                            <StaffCard data={member}/>
-                        ))}
-                    </Row>
+                    {staff.isFetching ?
+                        (
+                            <Loader/>
+                        ) :
+                        (
+                            <Row>
+                                <ToastContainer/>
+                                {staff.items.map((member, index) => (
+                                    <StaffCard key={index} data={member}/>
+                                ))}
+                            </Row>
+                        )
+                    }
                 </Grid>
+                <ToastContainer/>
+
             </div>
         )
     }
@@ -65,11 +65,9 @@ function mapStateToProps({staff}) {
     }
 }
 
-
 function mapDispatchToProps(dispatch) {
     return {
-        fetchStaff: () => {
-        },
+        fetchStaff: () => dispatch(fetchStaffIfNeeded()),
     }
 }
 

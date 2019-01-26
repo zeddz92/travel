@@ -175,3 +175,8 @@ nav .dropdown-menu li a {
 .gallery .photo-item {
     margin-bottom: 25px;
 }
+
+.justify-center {
+    display: flex;
+    justify-content: center;
+}

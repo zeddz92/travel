@@ -10,7 +10,7 @@ export default function StaffCard({data}) {
                 <Panel.Heading>
                     <h2>
                         {data.name}
-                        <small>{data.position}</small>
+                        <small>{data.position} - {data.country}</small>
                     </h2>
 
                 </Panel.Heading>
