@@ -9,7 +9,7 @@ import reducer from './reducers/index';
 const persistConfig = {
     key: 'root',
     storage: storage,
-    blacklist: ['error', 'form']
+    blacklist: ['error', 'form', 'contact']
 };
 
 const rootReducer = (state, action) => {

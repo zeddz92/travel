@@ -4,6 +4,8 @@ import {posts} from './posts';
 import {services} from './services';
 import {staff} from './staff';
 import {jobs} from './jobs';
+import {contact} from './contact';
+
 import {reducer as formReducer} from 'redux-form';
 
 export default combineReducers({
@@ -12,5 +14,6 @@ export default combineReducers({
     services,
     staff,
     jobs,
+    contact,
     form: formReducer
 });
