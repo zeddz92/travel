@@ -9,8 +9,10 @@ export default function PostCard({data}) {
                 <Col xs={12}>
                     <span className="post-date">{data.date}</span>
 
-                    {data.categories.map(category => (
-                        <Label>{category}</Label>
+                    {data.categories.map((category, index) => (
+                        <a href={`/press/${category.path}`}>
+                            <Label key={index}>{category.name}</Label>
+                        </a>
                     ))}
                 </Col>
 

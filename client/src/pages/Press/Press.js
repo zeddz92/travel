@@ -1,94 +1,88 @@
 import React, {PureComponent} from 'react';
-import {Grid, Row, Col, ListGroup, ListGroupItem} from "react-bootstrap";
-import Pagination from "react-js-pagination";
+import {Grid, Row, Col} from "react-bootstrap";
+import {toast, ToastContainer} from "react-toastify";
 import connect from "react-redux/es/connect/connect";
 
 import './style.css';
 import Head from '../../components/Head';
 import SubHeader from '../../components/SubHeader';
-import PostCard from './PostCard';
+import CategoryList from './CategoryList';
+import Feed from "./Feed";
 
-
-const demoPosts = [
-    {
-        title: "Planetyze Hostel was featured in NHK world news",
-        body: "Our newly opened Planetyze Hostel was featured on NHK world news on February 22nd. You can check the video with our CEO Hashimoto’s interview, from the link below. (The link might expire after a certain period) Dealing with Tokyo Hotel Shortage Our company is open to any inquiries, interviews, etc. on trends of foreign travelers […] ",
-        date: "2017/02/23",
-        categories: ["Media", "Travelience"]
-    },
-    {
-        title: "Travelience was featured in RAFU SHIMPO on 6th Dec. 2014.",
-        body: "Travelience was featured in RAFU SHIMPO on 6th Dec. 2014.",
-        date: "2015/12/04",
-        categories: ["Media", "Travelience"]
-    },
-];
-
-const demoCategories = [
-    "News", "Media", "Planetyze", "Planetyze Hostel", "TripleLights"
-];
-
+import {fetchCategoriesIfNeeded} from "../../store/actions/category";
+import {fetchPostBy} from "../../store/actions/posts";
 
 class Press extends PureComponent {
 
     componentDidMount() {
 
-        const {fetchPosts} = this.props;
-        fetchPosts();
+        const {fetchPosts, fetchCategories} = this.props;
+
+        const {categoryPath} = this.props.match.params;
+
+        fetchCategories();
+        fetchPosts(categoryPath, 1);
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {posts} = this.props;
+        if(posts.error && !posts.isFetching) {
+            toast.error(posts.error.message, {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+    }
+
+
     render() {
+        const {categories, posts, fetchPosts, currentCategory} = this.props;
+        const title = currentCategory ? currentCategory.name : "Press";
+        const {categoryPath} = this.props.match.params;
+
+        // Dont render the component if categories is still fetching, this is to prevent
+        // any errors when a category is selected
+        if(categories.isFetching) {
+            return null;
+        }
+
         return (
             <div>
-                <Head title={"Press"}/>
-                <SubHeader title={"Press"}/>
+                <Head title={title}/>
+                <SubHeader title={title}/>
                 <Grid>
                     <Row className="show-grid">
                         <Col md={2}>
-                            <ListGroup>
-                                {demoCategories.map(category => (
-                                    <ListGroupItem href="#">{category}</ListGroupItem>
-                                ))}
-                            </ListGroup>
-
+                            <CategoryList currentPath={categoryPath} isFetching={categories.isFetching}
+                                          items={categories.items}/>
                         </Col>
                         <Col md={10}>
-                            {demoPosts.map(post => (
-                                <PostCard data={post}/>
-                            ))}
-                            <div className="text-center">
-                                <Pagination
-                                    activePage={1}
-                                    itemsCountPerPage={10}
-                                    totalItemsCount={20}
-                                    pageRangeDisplayed={10}
-                                    onChange={(page) => {
-                                    }}
-                                />
-                            </div>
-
+                            <Feed categoryPath={categoryPath} fetchPosts={fetchPosts} data={posts}/>
                         </Col>
 
                     </Row>
-
                 </Grid>
+                <ToastContainer/>
+
             </div>
         );
     }
 }
 
-function mapStateToProps({posts}) {
+function mapStateToProps({posts, categories}, ownProps) {
+
+    const {categoryPath} = ownProps.match.params;
 
     return {
+        currentCategory: categories.items.find(category => category.path === categoryPath),
         posts,
+        categories
     }
 }
 
-
 function mapDispatchToProps(dispatch) {
     return {
-        fetchPosts: () => {
-        },
+        fetchCategories: () => dispatch(fetchCategoriesIfNeeded()),
+        fetchPosts: (category, page) => dispatch(fetchPostBy(category, page)),
 
     }
 }
