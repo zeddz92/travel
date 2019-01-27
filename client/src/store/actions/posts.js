@@ -1,3 +1,5 @@
+import i18next from 'i18next';
+
 import * as actionTypes from './types';
 
 function requestPosts() {
@@ -11,7 +13,8 @@ function receivePosts(category, res) {
     return {
         type: actionTypes.RECEIVE_POSTS,
         payload: {
-          ...res.data
+            ...res.data,
+            lng: i18next.language
         },
         error: false
     }
@@ -36,10 +39,10 @@ const fetchPosts = (url, category) => (dispatch, getState, api) => {
 
 
 export const fetchPostBy = (category = null, page = 1) => (dispatch) => {
-    let url =`/categories/${category}/posts?page=${page}`;
+    let url = `/categories/${category}/posts?page=${page}&lng=${i18next.language}`;
 
     if (!category) {
-        url = `/posts?page=${page}`
+        url = `/posts?page=${page}&lng=${i18next.language}`
     }
 
     return dispatch(fetchPosts(url, category))

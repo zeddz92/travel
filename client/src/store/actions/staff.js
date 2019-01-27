@@ -1,5 +1,6 @@
 import * as actionTypes from './types';
 import {shouldFetch, isDataStale} from './helpers';
+import i18next from 'i18next';
 
 function requestStaff() {
     return {
@@ -13,7 +14,8 @@ function receiveStaff(res) {
         type: actionTypes.RECEIVE_STAFF,
         payload: {
             data: res.data,
-            lastUpdated: Date.now()
+            lastUpdated: Date.now(),
+            lng: i18next.language
         },
         error: false
     }

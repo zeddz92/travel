@@ -30,6 +30,7 @@ export function posts(state = initialState, action) {
             return {
                 ...state,
                 items: action.payload.data,
+                lng: action.payload.lng,
                 currentPage: action.payload.currentPage,
                 perPage: action.payload.perPage,
                 total: action.payload.total,

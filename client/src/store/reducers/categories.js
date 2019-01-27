@@ -36,6 +36,7 @@ export function categories(state = initialState, action) {
                 isFetching: false,
                 didInvalidate: false,
                 items: action.payload.data,
+                lng: action.payload.lng,
                 lastUpdated: action.payload.lastUpdated,
                 error: null
             };

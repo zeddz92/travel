@@ -20,4 +20,16 @@ export const REQUEST_POSTS = "REQUEST_POSTS";
 export const RECEIVE_POSTS = "RECEIVE_POSTS";
 export const ERROR_POSTS = "ERROR_POSTS";
 
+// COMPANY
+export const REQUEST_COMPANY = "REQUEST_COMPANY";
+export const RECEIVE_COMPANY = "RECEIVE_COMPANY";
+export const INVALIDATE_COMPANY = "INVALIDATE_COMPANY";
+export const ERROR_COMPANY = "ERROR_COMPANY";
 
+
+
+// Jobs
+export const FETCH_JOSBS = "FETCH_JOSBS";
+
+// Services
+export const FETCH_SERVICES = "FETCH_SERVICES";
