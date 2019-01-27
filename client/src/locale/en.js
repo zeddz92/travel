@@ -12,6 +12,10 @@ export default {
         about: "About",
         staff: "Staff",
 
+        // Home Page
+        homeMessage: "Innovate a new travel style",
+        videoError: "Your browser does not support the video tag.",
+
         // About Page
         vision: "Vision",
         mission: "Mission",

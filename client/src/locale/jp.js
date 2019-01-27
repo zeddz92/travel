@@ -12,6 +12,10 @@ export default {
         about: "会社概要",
         staff: "スタッフ",
 
+        // Home Page
+        homeMessage: "新しい旅のスタイルを創る",
+        videoError: "お使いのブラウザはビデオタグをサポートしていません",
+
         // About Page
         vision: "トラベリエンスのビジョン",
         mission: "トラベリエンスのミッション",
