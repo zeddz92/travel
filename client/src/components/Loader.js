@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import ReactLoading from "react-loading";
 
 
-function Loader({type, color}) {
+function Loader({...rest}) {
     return (
         <div className="justify-center">
-            <ReactLoading type={type} color={color}/>
+            <ReactLoading {...rest}/>
         </div>
     );
 }
@@ -14,6 +14,8 @@ function Loader({type, color}) {
 Loader.propTypes = {
     type: PropTypes.string,
     color: PropTypes.string,
+    width: PropTypes.number,
+    height: PropTypes.node,
 };
 
 Loader.defaultProps = {
