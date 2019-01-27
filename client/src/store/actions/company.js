@@ -24,7 +24,7 @@ function receiveCompany(res) {
 function errorCompany(error) {
     return {
         type: actionTypes.ERROR_COMPANY,
-        error: {message: error.message, code: error.status}
+        error: {message: error.message, code: error.response.status}
     }
 }
 

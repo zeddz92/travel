@@ -23,7 +23,7 @@ function receivePosts(category, res) {
 function errorPost(category, error) {
     return {
         type: actionTypes.ERROR_POSTS,
-        error: {message: error.message, code: error.status}
+        error: {message: error.message, code: error.response.status}
     }
 }
 

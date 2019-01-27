@@ -22,7 +22,7 @@ function receiveResponse(res) {
 function errorContact(error) {
     return {
         type: actionTypes.ERROR_CONTACT_FORM,
-        error: {message: error.message, code: error.status}
+        error: {message: error.message, code: error.response.status}
     }
 }
 

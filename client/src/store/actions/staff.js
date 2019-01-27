@@ -24,7 +24,7 @@ function receiveStaff(res) {
 function errorStaff(error) {
     return {
         type: actionTypes.ERROR_STAFF,
-        error: {message: error.message, code: error.status}
+        error: {message: error.message, code: error.response.status}
     }
 }
 
