@@ -3,17 +3,17 @@ const paginate = require("paginate-array");
 const categories = require('../mocks/categories');
 const posts = require('../mocks/posts');
 
-const filterPostsByCategoryId = function (id, callback) {
-    const categoryId = Number(id);
-    const categoryIdExist = categories.filter(category => category.id === categoryId).length > 0;
+const filterPostsByCategoryId = function (path, callback) {
+    const categoryIdExist = categories.filter(category =>  category.path === path).length > 0;
     if (!categoryIdExist) {
         return callback({
             code: 404,
-            message: "Category id does not exist"
+            message: "Category does not exist"
         });
     }
 
-    const filteredPosts = posts.filter(post => (post.categories.filter(category => category.id === categoryId).length));
+
+    const filteredPosts = posts.filter(post => (post.categories.filter(category => category.path === path).length));
     return callback(null, filteredPosts);
 };
 
@@ -22,9 +22,9 @@ module.exports = app => {
         res.send(categories);
     });
 
-    app.get('/categories/:id/posts', (req, res) => {
-        const {id} = req.params;
-        filterPostsByCategoryId(id, function (error, collection) {
+    app.get('/categories/:path/posts', (req, res) => {
+        const {path} = req.params;
+        filterPostsByCategoryId(path, function (error, collection) {
             if(error) {
                 res.status(error.code);
                 return res.send(error);
