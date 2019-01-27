@@ -1,6 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Grid} from "react-bootstrap";
 import connect from "react-redux/es/connect/connect";
+import i18next from 'i18next';
 
 import './style.css';
 import Head from "../../components/Head";
@@ -14,7 +15,6 @@ class About extends PureComponent {
 
     componentDidMount() {
 
-
         const {fetchCompanyInfo} = this.props;
         fetchCompanyInfo();
     }
@@ -24,15 +24,21 @@ class About extends PureComponent {
 
         const info = company.data;
 
+        // When language change, since data is persisted, user will see when the language change.
+        // This is to prevent that
+        if(company.isFetching) {
+            return null;
+        }
+
         return (
             <div>
-                <Head title={"About"}/>
-                <SubHeader title={"About"} description={"Travelience Inc."}/>
+                <Head title={i18next.t("about")}/>
+                <SubHeader title={i18next.t("about")} description={info.name}/>
                 <Grid className="text-center">
                     <div>
 
                         <div className="page-title">
-                            <h2>Vision</h2>
+                            <h2>{i18next.t("vision")}</h2>
                             <hr/>
                         </div>
 
@@ -43,7 +49,7 @@ class About extends PureComponent {
 
                     <div>
                         <div className="page-title">
-                            <h2>Mission</h2>
+                            <h2>{i18next.t("mission")}</h2>
                             <hr/>
                         </div>
 
@@ -55,7 +61,7 @@ class About extends PureComponent {
 
                     <div>
                         <div className="page-title">
-                            <h2>Company</h2>
+                            <h2>{i18next.t("company")}</h2>
                             <hr/>
                         </div>
 
@@ -64,7 +70,6 @@ class About extends PureComponent {
                     <CompanyInfoTable data={info}/>
 
                 </Grid>
-
             </div>
         );
     }
