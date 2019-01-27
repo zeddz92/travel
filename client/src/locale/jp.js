@@ -1,6 +1,8 @@
 export default {
     translation: {
 
+        language: 'ENGLISH',
+
         // tittles
         contact: "お問い合わせ",
         company: "会社",
