@@ -25,6 +25,7 @@ export default {
         name: "名前",
         email: "Ｅメール",
         message: "メッセージ",
-        submit: "送信する"
+        submit: "送信する",
+        messageSent: "あなたのメッセージは正常に送信されました"
     }
 }

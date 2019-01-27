@@ -1,13 +1,14 @@
 import React from 'react';
 import {Grid} from "react-bootstrap";
+import i18next from 'i18next';
 import connect from "react-redux/es/connect/connect";
+import {toast, ToastContainer} from "react-toastify";
 
 import './style.css';
 import Head from "../../components/Head";
 import SubHeader from "../../components/SubHeader";
 import ContactForm from './ContactForm';
 import {submitForm} from "../../store/actions/contact";
-import {toast, ToastContainer} from "react-toastify";
 
 function Contact(props) {
 
@@ -27,8 +28,8 @@ function Contact(props) {
 
     return (
         <div>
-            <Head title={"Contact"}/>
-            <SubHeader title={"Contact"}/>
+            <Head title={i18next.t('contact')}/>
+            <SubHeader title={i18next.t('contact')}/>
             <Grid>
                 <ContactForm success={contact.success} isSubmitting={contact.isSubmitting} onSubmit={submit}/>
             </Grid>

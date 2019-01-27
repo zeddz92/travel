@@ -25,6 +25,7 @@ export default {
         name: "Name",
         email: "Email",
         message: "Message",
-        submit: "Submit"
+        submit: "Submit",
+        messageSent: "Your message was sent successfully"
     }
 }
