@@ -33,7 +33,7 @@ function invalidateCategory() {
     }
 }
 
-const fetchCategory = () => (dispatch, getState, api) => {
+const fetchCategories = () => (dispatch, getState, api) => {
     dispatch(requestCategories());
 
     return api.get('/categories')
@@ -52,7 +52,7 @@ export const fetchCategoriesIfNeeded = () => (dispatch, getState) => {
     }
 
     if (shouldFetch(category)) {
-        return dispatch(fetchCategory())
+        return dispatch(fetchCategories())
     }
 
     return Promise.resolve();
