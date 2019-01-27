@@ -8,8 +8,9 @@ import Contact from "./pages/Contact";
 import Staff from "./pages/Staff";
 import About from "./pages/About";
 import Service from "./pages/Service";
+import NotFound from "./pages/NotFound";
 
-export default function Routes() {
+function Routes() {
     return (
         <div>
             <Switch>
@@ -20,7 +21,10 @@ export default function Routes() {
                 <Route path={routePath.STAFF} component={Staff}/>
                 <Route path={routePath.ABOUT} component={About}/>
                 <Route path={routePath.SERVICE} component={Service}/>
+                <Route component={NotFound}/>
             </Switch>
         </div>
     )
 }
+
+export default Routes;
