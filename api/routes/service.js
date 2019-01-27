@@ -17,7 +17,8 @@ const findServiceById = function (id, callback) {
 
 module.exports = app => {
     app.get('/services', (req, res) => {
-        res.send(services);
+        const lng = req.query.lng || 'en';
+        res.send(services[lng]);
     });
 
     app.get('/services/:id', (req, res) => {

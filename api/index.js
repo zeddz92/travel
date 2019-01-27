@@ -22,9 +22,11 @@ require('./routes/job')(app);
 require('./routes/contact')(app);
 
 app.all(function (req, res, next) {
-    const {page, perPage} = req.query;
+    const {page, perPage, lng} = req.query;
     if (!page || page < 1) req.query.page = 1;
     if (!perPage || perPage < 10) req.query.perPage = 10;
+    if (!lng) req.query.lng = "en";
+    console.log("before");
     next();
 });
 

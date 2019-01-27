@@ -3,8 +3,8 @@ const paginate = require("paginate-array");
 const categories = require('../mocks/categories');
 const posts = require('../mocks/posts');
 
-const filterPostsByCategoryId = function (path, callback) {
-    const categoryIdExist = categories.filter(category =>  category.path === path).length > 0;
+const filterPostsByCategoryId = function (lng, path, callback) {
+    const categoryIdExist = categories[lng].filter(category =>  category.path === path).length > 0;
     if (!categoryIdExist) {
         return callback({
             code: 404,
@@ -12,19 +12,23 @@ const filterPostsByCategoryId = function (path, callback) {
         });
     }
 
+    console.log("lo tiguere",posts[lng]);
 
-    const filteredPosts = posts.filter(post => (post.categories.filter(category => category.path === path).length));
+    const filteredPosts = posts[lng].filter(post => (post.categories.filter(category => category.path === path).length));
     return callback(null, filteredPosts);
 };
 
 module.exports = app => {
     app.get('/categories', (req, res) => {
-        res.send(categories);
+        const lng = req.query.lng;
+        res.send(categories[lng]);
     });
 
     app.get('/categories/:path/posts', (req, res) => {
         const {path} = req.params;
-        filterPostsByCategoryId(path, function (error, collection) {
+        const lng = req.query.lng || 'en';
+
+        filterPostsByCategoryId(lng, path, function (error, collection) {
             if(error) {
                 res.status(error.code);
                 return res.send(error);
