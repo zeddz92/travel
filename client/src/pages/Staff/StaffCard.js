@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import Head from "../../components/Head";
 import {Col, Panel} from "react-bootstrap";
 
 export default function StaffCard({data}) {

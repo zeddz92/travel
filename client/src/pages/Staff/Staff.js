@@ -1,13 +1,13 @@
 import React, {PureComponent} from 'react';
-import {Grid, Row} from "react-bootstrap";
+import {Grid} from "react-bootstrap";
 import connect from "react-redux/es/connect/connect";
+import i18next from 'i18next';
 import {toast, ToastContainer} from 'react-toastify';
 
 import './style.css';
 import Head from "../../components/Head";
 import SubHeader from "../../components/SubHeader";
-import StaffCard from "./StaffCard";
-import Loader from "../../components/Loader";
+import StaffList from "./StaffList";
 import {fetchStaffIfNeeded} from "../../store/actions/staff";
 
 class Staff extends PureComponent {
@@ -33,23 +33,11 @@ class Staff extends PureComponent {
         const {staff} = this.props;
         return (
             <div>
-                <Head title="Staff"/>
-                <SubHeader title={"Staff"}/>
+                <Head title={i18next.t("staff")}/>
+                <SubHeader title={i18next.t("staff")}/>
 
                 <Grid>
-                    {staff.isFetching ?
-                        (
-                            <Loader/>
-                        ) :
-                        (
-                            <Row>
-                                <ToastContainer/>
-                                {staff.items.map((member, index) => (
-                                    <StaffCard key={index} data={member}/>
-                                ))}
-                            </Row>
-                        )
-                    }
+                    <StaffList data={staff}/>
                 </Grid>
                 <ToastContainer/>
 
