@@ -12,10 +12,9 @@ export function isDataStale(reducer) {
 }
 
 export function shouldFetch(reducer) {
-
-    const isEmpty = reducer.items.length === 0;
-
-    if (isEmpty) {
+    if(!reducer) {
+        return true
+    } else if (reducer.items.length === 0) {
         return true
     } else if (reducer.isFetching) {
         return false
