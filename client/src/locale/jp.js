@@ -1,0 +1,28 @@
+export default {
+    translation: {
+
+        // tittles
+        contact: "お問い合わせ",
+        company: "会社",
+        jobs: "採用情報",
+        services: "事業内容",
+        press: "ニュースリリース",
+        about: "会社概要",
+        staff: "スタッフ",
+
+        // About Page
+        vision: "トラベリエンスのビジョン",
+        mission: "トラベリエンスのミッション",
+        companyName: "会社名",
+        address: "所在地",
+        phone: "電話番号",
+        established: "設立",
+        ceo: "代表取締役社長",
+
+        // Contact page
+        name: "名前",
+        email: "Ｅメール",
+        message: "メッセージ",
+        submit: "送信する"
+    }
+}
