@@ -9,6 +9,7 @@ import Head from '../../components/Head';
 import SubHeader from '../../components/SubHeader';
 import CategoryList from './CategoryList';
 import Feed from "./Feed";
+import NotFound from "../NotFound";
 
 import {fetchCategoriesIfNeeded} from "../../store/actions/category";
 import {fetchPostBy} from "../../store/actions/posts";
@@ -40,10 +41,15 @@ class Press extends PureComponent {
         const title = currentCategory ? currentCategory.name : i18next.t('press');
         const {categoryPath} = this.props.match.params;
 
-        // Dont render the component if categories is still fetching, this is to prevent
-        // any errors when a category is selected
-        if (categories.isFetching) {
+        // Dont render till everything has been fetched
+        if (categories.isFetching || posts.isFetching) {
             return null;
+        }
+
+        // If api returns 404 it means that the category don't exist
+        // then show NotFound component instead
+        if(posts.error && posts.error.code === 404) {
+           return <NotFound/>;
         }
 
         return (
