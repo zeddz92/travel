@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {Grid, Row, Col} from "react-bootstrap";
 import {toast, ToastContainer} from "react-toastify";
 import connect from "react-redux/es/connect/connect";
+import i18next from 'i18next';
 
 import './style.css';
 import Head from '../../components/Head';
@@ -26,7 +27,7 @@ class Press extends PureComponent {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {posts} = this.props;
-        if(posts.error && !posts.isFetching) {
+        if (posts.error && !posts.isFetching) {
             toast.error(posts.error.message, {
                 position: toast.POSITION.TOP_CENTER
             });
@@ -36,12 +37,12 @@ class Press extends PureComponent {
 
     render() {
         const {categories, posts, fetchPosts, currentCategory} = this.props;
-        const title = currentCategory ? currentCategory.name : "Press";
+        const title = currentCategory ? currentCategory.name : i18next.t('press');
         const {categoryPath} = this.props.match.params;
 
         // Dont render the component if categories is still fetching, this is to prevent
         // any errors when a category is selected
-        if(categories.isFetching) {
+        if (categories.isFetching) {
             return null;
         }
 
@@ -58,7 +59,6 @@ class Press extends PureComponent {
                         <Col md={10}>
                             <Feed categoryPath={categoryPath} fetchPosts={fetchPosts} data={posts}/>
                         </Col>
-
                     </Row>
                 </Grid>
                 <ToastContainer/>
