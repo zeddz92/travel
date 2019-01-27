@@ -16,6 +16,11 @@ export default {
         homeMessage: "Innovate a new travel style",
         videoError: "Your browser does not support the video tag.",
 
+        // Not Found Page
+        oops: "Oops",
+        pageNotFound: "Page not found",
+        codeNotFound: "404 Not Found",
+
         // About Page
         vision: "Vision",
         mission: "Mission",

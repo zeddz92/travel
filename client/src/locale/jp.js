@@ -16,6 +16,11 @@ export default {
         homeMessage: "新しい旅のスタイルを創る",
         videoError: "お使いのブラウザはビデオタグをサポートしていません",
 
+        // Not Found Page
+        oops: "おっとっと",
+        pageNotFound: "ページが見つかりません",
+        codeNotFound: "404お探しのページが見つかりませんでした",
+
         // About Page
         vision: "トラベリエンスのビジョン",
         mission: "トラベリエンスのミッション",
