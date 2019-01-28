@@ -88,14 +88,6 @@ describe('category action creator', () => {
 
         const store = storeFactory(initialState);
 
-        moxios.wait(() => {
-            const request = moxios.requests.mostRecent();
-            request.respondWith({
-                status: 200,
-                response: categories
-            })
-        });
-
         return store.dispatch(fetchCategoriesIfNeeded()).then(() => {
             const newState = store.getState().categories;
             const action = store.getState().lastAction;
