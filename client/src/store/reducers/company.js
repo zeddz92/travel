@@ -3,6 +3,7 @@ import {INVALIDATE_COMPANY, ERROR_COMPANY, REQUEST_COMPANY, RECEIVE_COMPANY} fro
 const initialState = {
     isFetching: false,
     didInvalidate: false,
+    lastUpdated: 0,
     error: null,
     data: {}
 };
@@ -36,7 +37,7 @@ export function company(state = initialState, action) {
                 didInvalidate: false,
                 data: action.payload.data,
                 lng: action.payload.lng,
-                lastUpdated: action.payload.lastUpdated,
+                lastUpdated: Date.now(),
                 error: null
             };
 

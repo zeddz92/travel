@@ -3,6 +3,7 @@ import {RECEIVE_CATEGORIES, INVALIDATE_CATEGORIES, REQUEST_CATEGORIES, ERROR_CAT
 const initialState = {
     isFetching: false,
     didInvalidate: false,
+    lastUpdated: 0,
     error: null,
     items: []
 };
@@ -37,7 +38,7 @@ export function categories(state = initialState, action) {
                 didInvalidate: false,
                 items: action.payload.data,
                 lng: action.payload.lng,
-                lastUpdated: action.payload.lastUpdated,
+                lastUpdated: Date.now(),
                 error: null
             };
 

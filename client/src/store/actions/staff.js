@@ -14,7 +14,6 @@ function receiveStaff(res) {
         type: actionTypes.RECEIVE_STAFF,
         payload: {
             data: res.data,
-            lastUpdated: Date.now(),
             lng: i18next.language
         },
         error: false

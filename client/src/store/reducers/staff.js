@@ -3,6 +3,7 @@ import {RECEIVE_STAFF, INVALIDATE_STAFF, REQUEST_STAFF, ERROR_STAFF} from '../ac
 const initialState = {
     isFetching: false,
     didInvalidate: false,
+    lastUpdated: 0,
     error: null,
     items: [],
 };
@@ -37,7 +38,7 @@ export function staff(state = initialState, action) {
                 didInvalidate: false,
                 items: action.payload.data,
                 lng: action.payload.lng,
-                lastUpdated: action.payload.lastUpdated,
+                lastUpdated: Date.now(),
                 error: null
             };
 

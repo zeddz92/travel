@@ -15,7 +15,6 @@ function receiveCategories(res) {
         type: actionTypes.RECEIVE_CATEGORIES,
         payload: {
             data: res.data,
-            lastUpdated: Date.now(),
             lng: i18next.language
         },
         error: false

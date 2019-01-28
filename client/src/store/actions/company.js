@@ -14,7 +14,6 @@ function receiveCompany(res) {
         type: actionTypes.RECEIVE_COMPANY,
         payload: {
             data: res.data,
-            lastUpdated: Date.now(),
             lng: i18next.language
         },
         error: false
