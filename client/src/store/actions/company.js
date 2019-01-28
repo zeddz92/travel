@@ -22,9 +22,10 @@ function receiveCompany(res) {
 }
 
 function errorCompany(error) {
+    const response = error.response ? error.response : {};
     return {
         type: actionTypes.ERROR_COMPANY,
-        error: {message: error.message, code: error.response.status}
+        error: {message: error.message, code: response.status}
     }
 }
 

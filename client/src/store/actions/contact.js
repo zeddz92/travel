@@ -20,9 +20,10 @@ function receiveResponse(res) {
 }
 
 function errorContact(error) {
+    const response = error.response ? error.response : {};
     return {
         type: actionTypes.ERROR_CONTACT_FORM,
-        error: {message: error.message, code: error.response.status}
+        error: {message: error.message, code: response.status}
     }
 }
 

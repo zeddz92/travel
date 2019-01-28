@@ -21,9 +21,10 @@ function receivePosts(category, res) {
 }
 
 function errorPost(category, error) {
+    const response = error.response ? error.response : {};
     return {
         type: actionTypes.ERROR_POSTS,
-        error: {message: error.message, code: error.response.status}
+        error: {message: error.message, code:  response.status}
     }
 }
 

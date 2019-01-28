@@ -22,9 +22,10 @@ function receiveStaff(res) {
 }
 
 function errorStaff(error) {
+    const response = error.response ? error.response : {};
     return {
         type: actionTypes.ERROR_STAFF,
-        error: {message: error.message, code: error.response.status}
+        error: {message: error.message, code: response.status}
     }
 }
 

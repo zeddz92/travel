@@ -23,9 +23,10 @@ function receiveCategories(res) {
 }
 
 function errorCategories(error) {
+    const response = error.response ? error.response : {};
     return {
         type: actionTypes.ERROR_CATEGORIES,
-        error: {message: error.message, code: error.response.status}
+        error: {message: error.message, code: response.status}
     }
 }
 
