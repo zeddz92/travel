@@ -6,7 +6,7 @@ import {jobs} from './jobs';
 import {contact} from './contact';
 import {categories} from './categories';
 import {posts} from './posts';
-
+import {lastAction} from './lastAction';
 import {reducer as formReducer} from 'redux-form';
 
 export default combineReducers({
@@ -17,5 +17,6 @@ export default combineReducers({
     contact,
     categories,
     posts,
-    form: formReducer
+    form: formReducer,
+    lastAction
 });
