@@ -16,7 +16,6 @@ const rootReducer = (state, action) => {
     return reducer(state, action)
 };
 
-
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -25,9 +24,7 @@ export const middlewares = composeEnhancers(
 );
 
 export default (state = {}) => {
-    let store = createStore(persistedReducer, state, composeEnhancers(
-        applyMiddleware(thunk.withExtraArgument(axiosInstance)),
-    ));
+    let store = createStore(persistedReducer, state, middlewares);
 
     let persistor = persistStore(store);
     return {store, persistor}
