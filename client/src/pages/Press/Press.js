@@ -12,7 +12,7 @@ import Feed from "./Feed";
 import NotFound from "../NotFound";
 
 import {fetchCategoriesIfNeeded} from "../../store/actions/category";
-import {fetchPostBy} from "../../store/actions/posts";
+import {fetchPostBy} from "../../store/actions/post";
 
 class Press extends PureComponent {
 
