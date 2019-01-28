@@ -12,15 +12,13 @@ const filterPostsByCategoryId = function (lng, path, callback) {
         });
     }
 
-    console.log("lo tiguere",posts[lng]);
-
     const filteredPosts = posts[lng].filter(post => (post.categories.filter(category => category.path === path).length));
     return callback(null, filteredPosts);
 };
 
 module.exports = app => {
     app.get('/categories', (req, res) => {
-        const lng = req.query.lng;
+        const lng = req.query.lng || 'en';
         res.send(categories[lng]);
     });
 
