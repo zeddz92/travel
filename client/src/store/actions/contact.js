@@ -1,5 +1,6 @@
-import * as actionTypes from './types';
+import i18next from 'i18next';
 
+import * as actionTypes from './types';
 
 function requestContact() {
     return {
@@ -12,8 +13,7 @@ function receiveResponse(res) {
     return {
         type: actionTypes.SUBMIT_CONTACT_FORM,
         payload: {
-            data: res.data,
-            lastUpdated: Date.now()
+            data: res.data
         },
         error: null
     }
