@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import {Grid} from "react-bootstrap";
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import i18next from 'i18next';
 import {toast, ToastContainer} from 'react-toastify';
 

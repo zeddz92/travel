@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 import {Grid} from "react-bootstrap";
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import i18next from 'i18next';
 
 import './style.css';
@@ -31,7 +31,7 @@ class About extends PureComponent {
         }
 
         return (
-            <div>
+            <div data-test="component-about">
                 <Head title={i18next.t("about")}/>
                 <PageHead title={i18next.t("about")} description={info.name}/>
                 <Grid className="text-center">

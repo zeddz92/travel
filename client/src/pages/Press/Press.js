@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {Grid, Row, Col} from "react-bootstrap";
 import {toast, ToastContainer} from "react-toastify";
-import connect from "react-redux/es/connect/connect";
+import {connect} from "react-redux";
 import i18next from 'i18next';
 
 import './style.css';
