@@ -5,18 +5,16 @@ import i18next from 'i18next';
 
 import * as routes from '../utils/routes';
 
-function toggleLanguage(props) {
+function toggleLanguage() {
     const currentLanguage = i18next.language;
 
     const callback = (t) => {
         window.location.reload();
     };
 
-    if (currentLanguage === 'jp') {
-        return i18next.changeLanguage('en', callback);
-    }
+    const language = currentLanguage === 'jp' ? 'en' : 'jp';
 
-    return i18next.changeLanguage('jp', callback);
+    return i18next.changeLanguage(language, callback);
 }
 
 function Header(props) {
@@ -61,16 +59,9 @@ function Header(props) {
                             {i18next.t('contact')}
                         </NavItem>
 
-                        <NavItem onClick={() => toggleLanguage(props)} eventKey={6}>
+                        <NavItem onClick={toggleLanguage} eventKey={6}>
                             {i18next.t('language')}
                         </NavItem>
-
-                        {/*<NavDropdown eventKey={6} title="日本語" id="basic-nav">*/}
-                        {/*<MenuItem eventKey={6.1}>English</MenuItem>*/}
-                        {/*<MenuItem eventKey={6.2}>Spanish</MenuItem>*/}
-
-                        {/*</NavDropdown>*/}
-
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
