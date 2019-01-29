@@ -6,7 +6,7 @@ import {toast, ToastContainer} from "react-toastify";
 
 import './style.css';
 import Head from "../../components/Head";
-import SubHeader from "../../components/SubHeader";
+import PageHead from "../../components/PageHead";
 import ContactForm from './ContactForm';
 import {submitForm} from "../../store/actions/contact";
 
@@ -29,7 +29,7 @@ function Contact(props) {
     return (
         <div>
             <Head title={i18next.t('contact')}/>
-            <SubHeader title={i18next.t('contact')}/>
+            <PageHead title={i18next.t('contact')}/>
             <Grid>
                 <ContactForm success={contact.success} isSubmitting={contact.isSubmitting} onSubmit={submit}/>
             </Grid>

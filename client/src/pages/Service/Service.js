@@ -1,11 +1,11 @@
 import React, {PureComponent} from 'react';
-import {Grid, Row, Col, Image, ButtonGroup, Button} from "react-bootstrap";
+import {Grid, Row, Button} from "react-bootstrap";
 import Lightbox from 'react-image-lightbox';
 
 import './style.css';
 import 'react-image-lightbox/style.css';
 import Head from "../../components/Head";
-import SubHeader from "../../components/SubHeader";
+import PageHead from "../../components/PageHead";
 import Media from "../../components/Media";
 import ServiceCard from "./ServiceCard";
 
@@ -49,7 +49,7 @@ class Service extends PureComponent {
         return (
             <div>
                 <Head title={"Planetyze"}/>
-                <SubHeader title={"Planetyze"} description={"Travel Video Guide"}/>
+                <PageHead title={"Planetyze"} description={"Travel Video Guide"}/>
                 <div className="gallery">
                     <Grid>
                         <Row>

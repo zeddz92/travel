@@ -5,7 +5,7 @@ import i18next from 'i18next';
 
 import './style.css';
 import Head from "../../components/Head";
-import SubHeader from "../../components/SubHeader";
+import PageHead from "../../components/PageHead";
 import CompanyInfoTable from "./CompanyInfoTable";
 
 import {fetchCompanyIfNeeded} from "../../store/actions/company";
@@ -33,7 +33,7 @@ class About extends PureComponent {
         return (
             <div>
                 <Head title={i18next.t("about")}/>
-                <SubHeader title={i18next.t("about")} description={info.name}/>
+                <PageHead title={i18next.t("about")} description={info.name}/>
                 <Grid className="text-center">
                     <div>
 

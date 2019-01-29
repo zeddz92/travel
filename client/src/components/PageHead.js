@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from "prop-types";
 import {PageHeader} from "react-bootstrap";
 
-export default function SubHeader({title, description}) {
+export default function PageHead({title, description}) {
     return (
         <PageHeader className="sub-header">
             {title} <br/>
@@ -12,6 +12,6 @@ export default function SubHeader({title, description}) {
 }
 
 
-SubHeader.propTypes = {
+PageHead.propTypes = {
     title: PropTypes.string.isRequired,
 };

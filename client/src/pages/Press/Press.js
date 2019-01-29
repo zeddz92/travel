@@ -6,7 +6,7 @@ import i18next from 'i18next';
 
 import './style.css';
 import Head from '../../components/Head';
-import SubHeader from '../../components/SubHeader';
+import PageHead from '../../components/PageHead';
 import CategoryList from './CategoryList';
 import Feed from "./Feed";
 import NotFound from "../NotFound";
@@ -55,7 +55,7 @@ class Press extends PureComponent {
         return (
             <div>
                 <Head title={title}/>
-                <SubHeader title={title}/>
+                <PageHead title={title}/>
                 <Grid>
                     <Row className="show-grid">
                         <Col md={2}>

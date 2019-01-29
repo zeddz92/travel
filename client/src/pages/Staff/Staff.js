@@ -6,7 +6,7 @@ import {toast, ToastContainer} from 'react-toastify';
 
 import './style.css';
 import Head from "../../components/Head";
-import SubHeader from "../../components/SubHeader";
+import PageHead from "../../components/PageHead";
 import StaffList from "./StaffList";
 import {fetchStaffIfNeeded} from "../../store/actions/staff";
 
@@ -34,7 +34,7 @@ class Staff extends PureComponent {
         return (
             <div>
                 <Head title={i18next.t("staff")}/>
-                <SubHeader title={i18next.t("staff")}/>
+                <PageHead title={i18next.t("staff")}/>
 
                 <Grid>
                     <StaffList data={staff}/>
