@@ -26,7 +26,7 @@ class About extends PureComponent {
 
         // When language change, since data is persisted, user will see when the language change.
         // This is to prevent that
-        if(company.isFetching) {
+        if (company.isFetching) {
             return null;
         }
 
@@ -38,7 +38,7 @@ class About extends PureComponent {
                     <div>
 
                         <div className="page-title">
-                            <h2>{i18next.t("vision")}</h2>
+                            <h2 data-test="vision-title">{i18next.t("vision")}</h2>
                             <hr/>
                         </div>
 
@@ -49,7 +49,7 @@ class About extends PureComponent {
 
                     <div>
                         <div className="page-title">
-                            <h2>{i18next.t("mission")}</h2>
+                            <h2 data-test="mission-title">{i18next.t("mission")}</h2>
                             <hr/>
                         </div>
 
@@ -61,7 +61,7 @@ class About extends PureComponent {
 
                     <div>
                         <div className="page-title">
-                            <h2>{i18next.t("company")}</h2>
+                            <h2 data-test="company-title">{i18next.t("company")}</h2>
                             <hr/>
                         </div>
 
