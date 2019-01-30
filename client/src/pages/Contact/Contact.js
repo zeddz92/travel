@@ -20,14 +20,13 @@ function Contact(props) {
     const {contact} = props;
 
     if (contact.error) {
-        console.log("toast called");
         toast.error(contact.error.message, {
             position: toast.POSITION.TOP_CENTER
         });
     }
 
     return (
-        <div>
+        <div data-test="component-contact">
             <Head title={i18next.t('contact')}/>
             <PageHead title={i18next.t('contact')}/>
             <Grid>

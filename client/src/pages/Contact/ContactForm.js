@@ -11,7 +11,7 @@ let ContactForm = props => {
 
     if (success) {
         return (
-            <div className="text-center">
+            <div data-test="success-message" className="text-center">
                 <Alert bsStyle="success">
                     <span>{i18next.t("messageSent")}</span>
                 </Alert>;
@@ -20,23 +20,23 @@ let ContactForm = props => {
     }
 
     return (
-        <Form className="contact-form" horizontal onSubmit={handleSubmit}>
+        <Form data-test="component-contact-form" className="contact-form" horizontal onSubmit={handleSubmit}>
             <FormGroup>
                 <ControlLabel htmlFor="name">{i18next.t("name")}</ControlLabel>
-                <Field required name="name" component={FieldInput} type="text"/>
+                <Field test={"input-name"} required name="name" component={FieldInput} type="text"/>
             </FormGroup>
 
             <FormGroup>
                 <ControlLabel htmlFor="email">{i18next.t("email")}</ControlLabel>
-                <Field required name="email" component={FieldInput} componentClass="input" type="email"/>
+                <Field test="input-email" required name="email" component={FieldInput} componentClass="input" type="email"/>
             </FormGroup>
 
             <FormGroup>
                 <ControlLabel htmlFor="message">{i18next.t("message")}</ControlLabel>
-                <Field required name="message" component={FieldInput} componentClass="textarea" rows="8" type="text"/>
+                <Field test="input-message" required name="message" component={FieldInput} componentClass="textarea" rows="8" type="text"/>
             </FormGroup>
 
-            <Button bsStyle="primary" disabled={pristine || isSubmitting} type="submit">
+            <Button data-test="submit-button" disabled={pristine || isSubmitting} bsStyle="primary"  type="submit">
                 <Glyphicon glyph="send"/>
                 {i18next.t("submit")}</Button>
         </Form>
