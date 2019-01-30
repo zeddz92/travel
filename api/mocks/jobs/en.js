@@ -1,4 +1,4 @@
-const jobs = [
+const en = [
     {
         id: 1,
         title: "Full stack Developer – React / Node.js",
@@ -8,10 +8,9 @@ const jobs = [
     },
     {
         id: 2,
-        name: "Marketing & Growth (SEO/SEM)",
+        title: "Marketing & Growth (SEO/SEM)",
         description: "In Travelience, we are looking for a marketer who can help us plan and execute strategies to grow the company. The candidate must be very passionate about learning and improving his/her skills related to the position. "
     },
-
 ];
 
-module.exports = jobs;
+module.exports = en;
