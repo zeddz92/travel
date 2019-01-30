@@ -48,8 +48,8 @@ class Press extends PureComponent {
 
         // If api returns 404 it means that the category don't exist
         // then show NotFound component instead
-        if(posts.error && posts.error.code === 404) {
-           return <NotFound/>;
+        if (posts.error && posts.error.code === 404) {
+            return <NotFound/>;
         }
 
         return (
@@ -79,7 +79,9 @@ function mapStateToProps({posts, categories}, ownProps) {
     const {categoryPath} = ownProps.match.params;
 
     return {
-        currentCategory: categories.items.find(category => category.path === categoryPath),
+        currentCategory: categories.items ?
+            categories.items.find(category => category.path === categoryPath)
+            : {},
         posts,
         categories
     }
