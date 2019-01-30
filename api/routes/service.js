@@ -1,13 +1,12 @@
 const services = require('../mocks/services');
 
-const findServiceById = function (id, callback) {
-    const serviceId = Number(id);
-    const service = services.filter(service => service.id === serviceId);
+const findServiceByPath = function (path, lng, callback) {
+    const service = services[lng].filter(service => service.path === path);
     const serviceExist = service.length > 0;
     if (!serviceExist) {
         return callback({
             code: 404,
-            message: `No service matching id ${serviceId}`
+            message: `No service matching path ${path}`
         });
     }
 
@@ -21,9 +20,10 @@ module.exports = app => {
         res.send(services[lng]);
     });
 
-    app.get('/services/:id', (req, res) => {
-        const {id} = req.params;
-        findServiceById(id, function (error, service) {
+    app.get('/services/:path', (req, res) => {
+        const {path} = req.params;
+        const lng = req.query.lng || 'en';
+        findServiceByPath(path, lng, function (error, service) {
             if(error) {
                 res.status(error.code);
                 return res.send(error);
