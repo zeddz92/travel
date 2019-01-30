@@ -41,5 +41,8 @@ export default {
         website: "ウェブサイト",
         otherServices: "その他の事業",
 
+        // Jobs
+        jobOpenings: "求人情報",
+        submitResume: "私たちの開口部をチェックし、にあなたの履歴書を提出してください"
     }
 }

@@ -41,5 +41,9 @@ export default {
         website: "Website",
         otherServices: "Other Services",
 
+        // Jobs
+        jobOpenings: "Job Openings",
+        submitResume: "Check out our openings and submit your resume to"
+
     }
 }
