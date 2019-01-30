@@ -9,7 +9,7 @@ import {axiosInstance} from '../utils/axiosInstance';
 const persistConfig = {
     key: 'root',
     storage: storage,
-    blacklist: ['error', 'form', 'contact', 'posts', 'lastAction']
+    blacklist: ['error', 'form', 'contact', 'posts', 'lastAction','service']
 };
 
 const rootReducer = (state, action) => {
