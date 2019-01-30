@@ -3,7 +3,11 @@ import * as actionTypes from '../actions/types';
 const initialState = {
     isFetching: false,
     error: null,
-    data: {medias:[]}
+    data: {
+        name: "",
+        description: "",
+        medias:[]
+    }
 };
 
 export function service(state = initialState, action) {

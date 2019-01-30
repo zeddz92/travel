@@ -5,7 +5,9 @@ const initialState = {
     didInvalidate: false,
     lastUpdated: 0,
     error: null,
-    data: {}
+    data: {
+        name: ""
+    }
 };
 
 export function company(state = initialState, action) {
