@@ -7,7 +7,7 @@ export default function ServiceCard({data}) {
         <div>
             <Col sm={6} md={4}>
                 <div className="service-item">
-                    <a href={data.url}>
+                    <a href={data.website_url}>
                         <Image src={data.logo}/>
                     </a>
                 </div>

@@ -1,6 +1,5 @@
 export const HOME = "/";
-export const SERVICE = "/service";
-export const SERVICES = "/services";
+export const SERVICE = "/services/:servicePath";
 export const JOBS = "/jobs";
 export const ABOUT = "/about";
 export const PRESS = "/press";
