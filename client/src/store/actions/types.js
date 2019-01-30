@@ -37,5 +37,9 @@ export const REQUEST_SERVICE = "REQUEST_SERVICE";
 export const RECEIVE_SERVICE = "RECEIVE_SERVICE";
 export const ERROR_SERVICE = "ERROR_SERVICE";
 
+// Jobs
+export const REQUEST_JOBS = "REQUEST_JOBS";
+export const RECEIVE_JOBS = "RECEIVE_JOBS";
+export const ERROR_JOBS = "ERROR_JOBS";
 
 
