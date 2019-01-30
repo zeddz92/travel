@@ -35,6 +35,11 @@ export default {
         email: "Email",
         message: "Message",
         submit: "Submit",
-        messageSent: "Your message was sent successfully"
+        messageSent: "Your message was sent successfully",
+
+        // Services
+        website: "Website",
+        otherServices: "Other Services",
+
     }
 }

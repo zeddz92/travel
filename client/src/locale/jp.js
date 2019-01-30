@@ -35,6 +35,11 @@ export default {
         email: "Ｅメール",
         message: "メッセージ",
         submit: "送信する",
-        messageSent: "あなたのメッセージは正常に送信されました"
+        messageSent: "あなたのメッセージは正常に送信されました",
+
+        // Services
+        website: "ウェブサイト",
+        otherServices: "その他の事業",
+
     }
 }
