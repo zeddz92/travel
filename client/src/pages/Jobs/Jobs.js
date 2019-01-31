@@ -2,6 +2,7 @@ import React, {PureComponent} from 'react';
 import {connect} from "react-redux";
 import {Grid} from "react-bootstrap";
 import i18next from 'i18next';
+import {toast, ToastContainer} from "react-toastify";
 
 import './style.css';
 import Head from "../../components/Head";
@@ -16,12 +17,22 @@ class Jobs extends PureComponent {
         fetchJobs();
     }
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {jobs} = this.props;
+        if (jobs.error && !jobs.isFetching) {
+            toast.error(jobs.error.message, {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
+    }
+
+
     render() {
 
         const {jobs} = this.props;
-        const items= jobs.items;
+        const items = jobs.items;
 
-        if(jobs.isFetching) {
+        if (jobs.isFetching) {
             return null;
         }
         return (
@@ -46,6 +57,7 @@ class Jobs extends PureComponent {
                         ))}
                     </div>
                 </Grid>
+                <ToastContainer/>
             </div>
         );
     }
