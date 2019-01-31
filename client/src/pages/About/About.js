@@ -7,28 +7,43 @@ import './style.css';
 import Head from "../../components/Head";
 import PageHead from "../../components/PageHead";
 import CompanyInfoTable from "./CompanyInfoTable";
+import ComponentError from "../../components/ComponentError";
 
 import {fetchCompanyIfNeeded} from "../../store/actions/company";
 
 
 class About extends PureComponent {
 
+    state = {
+        hasError: false
+    };
+
     componentDidMount() {
 
         const {fetchCompanyInfo} = this.props;
         fetchCompanyInfo();
     }
+    componentDidCatch(error, info) {
+        this.setState({ hasError: true });
+    }
 
     render() {
         const {company} = this.props;
+        const {hasError} = this.state;
+
+        if (company.isFetching) {
+            return null;
+        }
+
+        if(hasError) {
+            return <ComponentError/>
+        }
+
 
         const info = company.data;
 
         // When language change, since data is persisted, user will see when the language change.
         // This is to prevent that
-        if (company.isFetching) {
-            return null;
-        }
 
         return (
             <div data-test="component-about">
