@@ -16,13 +16,12 @@ const findServiceByPath = function (path, lng, callback) {
 
 module.exports = app => {
     app.get('/services', (req, res) => {
-        const lng = req.query.lng || 'en';
+        const {lng} = req.query;
         res.send(services[lng]);
     });
 
     app.get('/services/:path', (req, res) => {
-        const {path} = req.params;
-        const lng = req.query.lng || 'en';
+        const {path, lng} = req.params;
         findServiceByPath(path, lng, function (error, service) {
             if(error) {
                 res.status(error.code);

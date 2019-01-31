@@ -4,8 +4,7 @@ const posts = require('../mocks/posts');
 
 module.exports = app => {
     app.get('/posts', (req, res) => {
-        const lng = req.query.lng || 'en';
-        console.log(lng);
+        const {lng} = req.query;
         const {page, perPage} = req.query;
         const collection = paginate(posts[lng], page, perPage);
         res.send(collection);
