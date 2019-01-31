@@ -43,7 +43,10 @@ export default {
 
         // Jobs
         jobOpenings: "Job Openings",
-        submitResume: "Check out our openings and submit your resume to"
+        submitResume: "Check out our openings and submit your resume to",
+
+        // Errors
+        somethingWrong: "Something went wrong."
 
     }
 }

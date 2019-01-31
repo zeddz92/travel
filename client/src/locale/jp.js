@@ -43,6 +43,10 @@ export default {
 
         // Jobs
         jobOpenings: "求人情報",
-        submitResume: "私たちの開口部をチェックし、にあなたの履歴書を提出してください"
+        submitResume: "私たちの開口部をチェックし、にあなたの履歴書を提出してください",
+
+        // Errors
+        somethingWrong: "何か問題がありました。"
+
     }
 }
