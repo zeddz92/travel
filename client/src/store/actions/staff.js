@@ -1,6 +1,6 @@
 import * as actionTypes from './types';
 import {shouldFetch, isDataStale} from './helpers';
-import i18next from 'i18next';
+import i18n from '../../locale/i18nTestsConfig';
 
 function requestStaff() {
     return {
@@ -14,7 +14,7 @@ function receiveStaff(res) {
         type: actionTypes.RECEIVE_STAFF,
         payload: {
             data: res.data,
-            lng: i18next.language
+            lng: i18n.languages[0]
         },
         error: false
     }

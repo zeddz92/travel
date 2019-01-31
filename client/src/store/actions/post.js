@@ -1,4 +1,4 @@
-import i18next from 'i18next';
+import i18next from '../../locale/i18n';
 
 import * as actionTypes from './types';
 
@@ -14,7 +14,7 @@ function receivePosts(category, res) {
         type: actionTypes.RECEIVE_POSTS,
         payload: {
             ...res.data,
-            lng: i18next.language
+            lng: i18next.languages[0]
         },
         error: false
     }
@@ -40,10 +40,10 @@ const fetchPosts = (url, category) => (dispatch, getState, api) => {
 
 
 export const fetchPostBy = (category = null, page = 1) => (dispatch) => {
-    let url = `/categories/${category}/posts?page=${page}&lng=${i18next.language}`;
+    let url = `/categories/${category}/posts?page=${page}&lng=${i18next.languages[0]}`;
 
     if (!category) {
-        url = `/posts?page=${page}&lng=${i18next.language}`
+        url = `/posts?page=${page}&lng=${i18next.languages[0]}`
     }
 
     return dispatch(fetchPosts(url, category))

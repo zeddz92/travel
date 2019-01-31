@@ -1,4 +1,4 @@
-import i18next from 'i18next';
+import i18next from '../../locale/i18n';
 
 import * as actionTypes from './types';
 
@@ -14,7 +14,7 @@ function receiveJobs(res) {
         type: actionTypes.RECEIVE_JOBS,
         payload: {
             items: res.data,
-            lng: i18next.language
+            lng: i18next.languages[0]
         },
         error: null
     }
@@ -31,7 +31,7 @@ function errorJobs(error) {
 export const fetchJobs = () => (dispatch, getState, api) => {
     dispatch(requestJobs());
 
-    return api.get(`/jobs?lng=${i18next.language}`)
+    return api.get(`/jobs?lng=${i18next.languages[0]}`)
         .then(
             response => dispatch(receiveJobs(response)),
             error => dispatch(errorJobs(error))

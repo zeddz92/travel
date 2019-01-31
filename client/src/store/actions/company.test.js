@@ -27,7 +27,7 @@ describe('company action creator', () => {
             type: actionTypes.RECEIVE_COMPANY,
             payload: {
                 data: company,
-                lng: i18n.language,
+                lng: i18n.languages[0],
             },
             error: false
         };

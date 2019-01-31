@@ -1,4 +1,4 @@
-import i18next from 'i18next';
+import i18next from '../../locale/i18n';
 
 import * as actionTypes from './types';
 

@@ -1,4 +1,4 @@
-import i18next from 'i18next';
+import i18next from '../../locale/i18n';
 
 import * as actionTypes from './types';
 import {shouldFetch, isDataStale} from './helpers';
@@ -15,7 +15,8 @@ function receiveCategories(res) {
         type: actionTypes.RECEIVE_CATEGORIES,
         payload: {
             data: res.data,
-            lng: i18next.language
+            lng: i18next.languages[0]
+
         },
         error: false
     }
@@ -38,7 +39,7 @@ function invalidateCategory() {
 const fetchCategories = () => (dispatch, getState, api) => {
     dispatch(requestCategories());
 
-    return api.get(`/categories?lng=${i18next.language}`)
+    return api.get(`/categories?lng=${i18next.languages[0]}`)
         .then(
             response => dispatch(receiveCategories(response)),
             error => dispatch(errorCategories(error))

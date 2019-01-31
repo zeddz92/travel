@@ -27,7 +27,7 @@ describe('staff action creator', () => {
             type: actionTypes.RECEIVE_STAFF,
             payload: {
                 data: staff,
-                lng: i18n.language,
+                lng: i18n.languages[0],
             },
             error: false
         };

@@ -1,6 +1,7 @@
 import * as actionTypes from './types';
 import {shouldFetch, isDataStale} from './helpers';
-import i18next from 'i18next';
+import i18next from '../../locale/i18n';
+
 
 function requestCompany() {
     return {
@@ -14,7 +15,7 @@ function receiveCompany(res) {
         type: actionTypes.RECEIVE_COMPANY,
         payload: {
             data: res.data,
-            lng: i18next.language
+            lng: i18next.languages[0]
         },
         error: false
     }
@@ -37,7 +38,7 @@ function invalidateCompany() {
 const fetchCompany = () => (dispatch, getState, api) => {
     dispatch(requestCompany());
 
-    return api.get(`/company?lng=${i18next.language}`)
+    return api.get(`/company?lng=${i18next.languages[0]}`)
         .then(
             response => dispatch(receiveCompany(response)),
             error => dispatch(errorCompany(error))

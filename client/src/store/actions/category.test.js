@@ -1,6 +1,6 @@
 import moxios from 'moxios';
 
-import i18n from '../../locale/i18n';
+import i18n from '../../locale/i18nTestsConfig';
 import {axiosInstance} from '../../utils/axiosInstance';
 import {storeFactory} from '../../utils/testUtils';
 import {categories} from '../../utils/mockData/categories';
@@ -27,7 +27,7 @@ describe('category action creator', () => {
             type: actionTypes.RECEIVE_CATEGORIES,
             payload: {
                 data: categories,
-                lng: i18n.language,
+                lng: i18n.languages[0],
             },
             error: false
         };
