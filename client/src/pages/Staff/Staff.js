@@ -8,18 +8,21 @@ import './style.css';
 import Head from "../../components/Head";
 import PageHead from "../../components/PageHead";
 import StaffList from "./StaffList";
+import ComponentError from "../../components/ComponentError";
 import {fetchStaffIfNeeded} from "../../store/actions/staff";
 
 class Staff extends PureComponent {
 
-    componentDidMount() {
+    state = {
+        hasError: false
+    };
 
+    componentDidMount() {
         const {fetchStaff} = this.props;
         fetchStaff();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot){
-
         const {staff} = this.props;
         if(staff.error && !staff.isFetching) {
             toast.error(staff.error.message, {
@@ -31,6 +34,12 @@ class Staff extends PureComponent {
     render() {
 
         const {staff} = this.props;
+        const {hasError} = this.state;
+
+        if(hasError) {
+            return <ComponentError/>
+        }
+
         return (
             <div>
                 <Head title={i18next.t("staff")}/>

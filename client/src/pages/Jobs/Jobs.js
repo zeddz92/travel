@@ -8,13 +8,22 @@ import './style.css';
 import Head from "../../components/Head";
 import PageHead from "../../components/PageHead";
 import JobCard from './JobCard';
+import ComponentError from "../../components/ComponentError";
 import {fetchJobs} from "../../store/actions/job";
 
 class Jobs extends PureComponent {
 
+    state = {
+        hasError: false
+    };
+
     componentDidMount() {
         const {fetchJobs} = this.props;
         fetchJobs();
+    }
+
+    componentDidCatch(error, info) {
+        this.setState({ hasError: true });
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -28,9 +37,14 @@ class Jobs extends PureComponent {
 
 
     render() {
-
+        const {hasError} = this.state;
         const {jobs} = this.props;
         const items = jobs.items;
+
+
+        if(hasError) {
+            return <ComponentError/>
+        }
 
         if (jobs.isFetching) {
             return null;

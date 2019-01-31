@@ -12,6 +12,7 @@ import PageHead from "../../components/PageHead";
 import Media from "../../components/Media";
 import NotFound from "../NotFound";
 import ServiceCard from "./ServiceCard";
+import ComponentError from "../../components/ComponentError";
 import {fetchCategoriesIfNeeded} from "../../store/actions/category";
 import {fetchService} from "../../store/actions/_service";
 
@@ -19,6 +20,7 @@ class Service extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
+            hasError: false,
             isGalleryOpen: false,
             photoIndex: 0,
         }
@@ -32,6 +34,10 @@ class Service extends PureComponent {
         console.log(service);
     }
 
+    componentDidCatch(error, info) {
+        this.setState({ hasError: true });
+    }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {service} = this.props;
         if (service.error && !service.isFetching) {
@@ -42,8 +48,12 @@ class Service extends PureComponent {
     }
 
     render() {
-        const {isGalleryOpen, photoIndex} = this.state;
+        const {isGalleryOpen, photoIndex, hasError} = this.state;
         const {service, services} = this.props;
+
+        if(hasError) {
+            return <ComponentError/>
+        }
 
         if (service.isFetching) {
             return null;

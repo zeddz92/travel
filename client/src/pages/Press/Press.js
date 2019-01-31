@@ -13,8 +13,13 @@ import NotFound from "../NotFound";
 
 import {fetchCategoriesIfNeeded} from "../../store/actions/category";
 import {fetchPostBy} from "../../store/actions/post";
+import ComponentError from "../../components/ComponentError";
 
 class Press extends PureComponent {
+
+    state = {
+        hasError: false
+    };
 
     componentDidMount() {
         const {fetchPosts, fetchCategories} = this.props;
@@ -33,11 +38,21 @@ class Press extends PureComponent {
         }
     }
 
+    componentDidCatch(error, info) {
+        this.setState({ hasError: true });
+    }
+
 
     render() {
         const {categories, posts, fetchPosts, currentCategory} = this.props;
         const title = currentCategory ? currentCategory.name : i18next.t('press');
         const {categoryPath} = this.props.match.params;
+        const {hasError} = this.state;
+
+        if(hasError) {
+            return <ComponentError/>
+        }
+
 
         // Dont render till everything has been fetched
         if (categories.isFetching || posts.isFetching) {
