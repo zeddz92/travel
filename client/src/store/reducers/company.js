@@ -6,7 +6,8 @@ const initialState = {
     lastUpdated: 0,
     error: null,
     data: {
-        name: ""
+        name: "",
+        services:[]
     }
 };
 
