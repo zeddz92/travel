@@ -3,6 +3,7 @@ import i18next from 'i18next';
 import {Grid, Row, Button} from "react-bootstrap";
 import {connect} from "react-redux";
 import Lightbox from 'react-image-lightbox';
+import {toast, ToastContainer} from "react-toastify";
 
 import './style.css';
 import 'react-image-lightbox/style.css';
@@ -29,6 +30,15 @@ class Service extends PureComponent {
 
         fetchService(servicePath);
         console.log(service);
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {service} = this.props;
+        if (service.error && !service.isFetching) {
+            toast.error(service.error.message, {
+                position: toast.POSITION.TOP_CENTER
+            });
+        }
     }
 
     render() {
@@ -115,6 +125,7 @@ class Service extends PureComponent {
                         }
                     />
                 )}
+                <ToastContainer/>
             </div>
         );
     }
