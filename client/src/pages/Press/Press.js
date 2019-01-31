@@ -17,9 +17,7 @@ import {fetchPostBy} from "../../store/actions/post";
 class Press extends PureComponent {
 
     componentDidMount() {
-
         const {fetchPosts, fetchCategories} = this.props;
-
         const {categoryPath} = this.props.match.params;
 
         fetchCategories();
@@ -68,7 +66,6 @@ class Press extends PureComponent {
                     </Row>
                 </Grid>
                 <ToastContainer/>
-
             </div>
         );
     }
@@ -79,9 +76,7 @@ function mapStateToProps({posts, categories}, ownProps) {
     const {categoryPath} = ownProps.match.params;
 
     return {
-        currentCategory: categories.items ?
-            categories.items.find(category => category.path === categoryPath)
-            : {},
+        currentCategory: categories.items.find(category => category.path === categoryPath),
         posts,
         categories
     }
