@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const expressValidator = require('express-validator');
 
+const defaultQueryParams = require('./middlewares/defaultQueryParams');
+
 const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({
@@ -11,6 +13,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(expressValidator());
 
+
+app.use(defaultQueryParams);
 
 // Routes
 require('./routes/post')(app);
@@ -21,14 +25,7 @@ require('./routes/company')(app);
 require('./routes/job')(app);
 require('./routes/contact')(app);
 
-app.all(function (req, res, next) {
-    const {page, perPage, lng} = req.query;
-    if (!page || page < 1) req.query.page = 1;
-    if (!perPage || perPage < 10) req.query.perPage = 10;
-    if (!lng) req.query.lng = "en";
-    console.log("before");
-    next();
-});
+
 
 app.get('/', (req, res) => {
     res.send({
