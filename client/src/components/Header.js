@@ -27,6 +27,11 @@ class Header extends PureComponent {
         fetchServices();
     }
 
+    handleRoute = (route) => {
+        const {history} = this.props;
+        history.push(route);
+    }
+
     render() {
         const {location, services} = this.props;
 
@@ -38,7 +43,7 @@ class Header extends PureComponent {
                 <Navbar style={{zIndex: zIndex}} inverse collapseOnSelect>
                     <Navbar.Header>
                         <Navbar.Brand>
-                            <a href={"/"}>Travelience</a>
+                            <a onClick={()=> this.handleRoute(routes.HOME)}>Travelience</a>
                         </Navbar.Brand>
                         <Navbar.Toggle/>
                     </Navbar.Header>
@@ -46,28 +51,28 @@ class Header extends PureComponent {
                     <Navbar.Collapse>
                         <Nav pullRight>
                             <NavDropdown eventKey={1} title={i18next.t('company')} id="basic-nav">
-                                <MenuItem href={routes.ABOUT} eventKey={1.1}>{i18next.t('about')}</MenuItem>
-                                <MenuItem href={routes.STAFF} eventKey={1.2}>{i18next.t('staff')}</MenuItem>
-                                <MenuItem href={routes.JOBS} eventKey={1.3}>{i18next.t('jobs')}</MenuItem>
-                                <MenuItem href={routes.CONTACT} eventKey={1.4}>{i18next.t('contact')}</MenuItem>
+                                <MenuItem onClick={()=> this.handleRoute(routes.ABOUT)} eventKey={1.1}>{i18next.t('about')}</MenuItem>
+                                <MenuItem onClick={()=> this.handleRoute(routes.STAFF)} eventKey={1.2}>{i18next.t('staff')}</MenuItem>
+                                <MenuItem onClick={()=> this.handleRoute(routes.JOBS)} eventKey={1.3}>{i18next.t('jobs')}</MenuItem>
+                                <MenuItem onClick={()=> this.handleRoute(routes.CONTACT)} eventKey={1.4}>{i18next.t('contact')}</MenuItem>
                             </NavDropdown>
 
-                            <NavItem eventKey={2} href={routes.JOBS}>
+                            <NavItem eventKey={2} onClick={()=> this.handleRoute(routes.JOBS)}>
                                 {i18next.t('jobs')}
                             </NavItem>
 
                             <NavDropdown eventKey={1} title={i18next.t('services')} id="basic-nav">
                                 {services.items.map((service, index) => (
-                                    <MenuItem key={index} href={`/services/${service.path}`}
+                                    <MenuItem key={index} onClick={()=> this.handleRoute(`/services/${service.path}`)}
                                               eventKey={`{1.${index + 1}}`}>{service.name}</MenuItem>
                                 ))}
                             </NavDropdown>
 
-                            <NavItem eventKey={4} href={routes.PRESS}>
+                            <NavItem eventKey={4} onClick={()=> this.handleRoute(routes.PRESS)}>
                                 {i18next.t('press')}
                             </NavItem>
 
-                            <NavItem eventKey={5} href={routes.CONTACT}>
+                            <NavItem eventKey={5} onClick={()=> this.handleRoute(routes.CONTACT)}>
                                 {i18next.t('contact')}
                             </NavItem>
 
