@@ -1,6 +1,7 @@
 const services = require('../mocks/services');
 
 const findServiceByPath = function (path, lng, callback) {
+    console.log(lng);
     const service = services[lng].filter(service => service.path === path);
     const serviceExist = service.length > 0;
     if (!serviceExist) {
@@ -21,7 +22,8 @@ module.exports = app => {
     });
 
     app.get('/services/:path', (req, res) => {
-        const {path, lng} = req.params;
+        const {path} = req.params;
+        const {lng} = req.query;
         findServiceByPath(path, lng, function (error, service) {
             if(error) {
                 res.status(error.code);
