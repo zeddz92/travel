@@ -1,4 +1,5 @@
-import i18next from 'i18next';
+import i18next from '../../locale/i18n';
+
 
 import * as actionTypes from './types';
 
@@ -14,7 +15,7 @@ function receiveService(res) {
         type: actionTypes.RECEIVE_SERVICE,
         payload: {
             data: res.data,
-            lng: i18next.language
+            lng: i18next.languages[0]
         },
         error: null
     }
@@ -31,7 +32,7 @@ function errorService(error) {
 export const fetchService = (path) => (dispatch, getState, api) => {
     dispatch(requestService(path));
 
-    return api.get(`/services/${path}?lng=${i18next.language}`)
+    return api.get(`/services/${path}?lng=${i18next.languages[0]}`)
         .then(
             response => dispatch(receiveService(response)),
             error => dispatch(errorService(error))
